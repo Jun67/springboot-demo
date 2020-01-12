@@ -1,0 +1,14 @@
+<html xmlns:th="http:www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+<form action="/user/login" method="post">
+    <label>用户：<input name="name"></label><br>
+    <label>密码：<input type="password" name="password"></label><br>
+    <button type="submit">登录</button>
+</form>
+</body>
+</html>

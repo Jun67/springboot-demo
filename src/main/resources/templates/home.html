@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+<div th:object="${session.user}">
+    <p th:text="'用户ID：' + *{id}"></p>
+    <p th:text="'用户名称：' + *{name}"></p>
+</div>
+</body>
+</html>
