@@ -10,5 +10,10 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-aliases-package: com.bailiban.springboot.model
   mapper-locations: mybatis-xml/*.xml
+
+hello:
+  enabled: true
+  msg: Spring Boot

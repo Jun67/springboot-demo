@@ -1,0 +1,86 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>更新</title>
+</head>
+<body>
+<div th:replace="header::header"></div>
+
+
+<form class="layui-form content-center" action="" th:action="@{/user/update}" method="post" th:object="${session.user}">
+    <input hidden name="id" th:value="*{id}"/>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户：</label>
+        <div class="layui-input-inline">
+            <input name="name" th:value="*{name}" required  lay-verify="required" placeholder="请输入用户名" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码：</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" th:value="*{password}" required lay-verify="required"
+                   placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">密码至少为6位！</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别：</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sex" value="0" title="男" th:checked="*{sex == 0}">
+            <input type="radio" name="sex" value="1" title="女" th:checked="*{sex == 1}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机：</label>
+        <div class="layui-input-inline">
+            <input name="phone" th:value="*{phone}" placeholder="请输入手机号码" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱：</label>
+        <div class="layui-input-inline">
+            <input name="email" th:value="*{email}" placeholder="请输入邮箱" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址：</label>
+        <div class="layui-input-inline">
+            <input name="address" th:value="*{address}" placeholder="请输入地址" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">生日：</label>
+        <div class="layui-input-inline">
+            <input name="birthday" id="birthday" th:value="${#dates.format(session.user.birthday, 'yyyy-MM-dd')}"
+                   placeholder="请输入生日" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    layui.use(['form', 'laydate'], function(){
+        const form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            // layer.msg(JSON.stringify(data.field));
+            console.log(JSON.stringify(data.field));
+            return true;
+        });
+
+        const laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#birthday' //指定元素
+            , trigger: "click"
+        });
+    });
+</script>
+</body>
+</html>

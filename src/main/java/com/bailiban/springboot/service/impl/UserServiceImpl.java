@@ -17,4 +17,19 @@ public class UserServiceImpl implements UserService {
         User u = userMapper.findUser(user);
         return u;
     }
+
+    @Override
+    public User get(int id) {
+        return userMapper.findUser(new User().setId(id));
+    }
+
+    @Override
+    public int update(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    @Override
+    public int insert(User user) {
+        return userMapper.insertUser(user);
+    }
 }

@@ -18,4 +18,37 @@
             </if>
         </where>
     </select>
+
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="insertUser" keyProperty="id" useGeneratedKeys="true">
+        insert into user(name, password, sex, phone, email, address, birthday)
+            values (#{name}, #{password}, #{sex}, #{phone}, #{email}, #{address}, #{birthday})
+    </insert>
 </mapper>

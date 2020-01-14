@@ -1,12 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 </head>
+<style>
+    .content-center div{
+        font-size: 16px;
+        line-height: 30px;
+    }
+</style>
 <body>
-<div th:object="${session.user}">
-    <p th:text="'用户ID：' + *{id}"></p>
-    <p th:text="'用户名称：' + *{name}"></p>
+<div th:replace="header::header"></div>
+
+<div class="content-center" th:object="${session.user}">
+    <div>用户：<span th:text="*{name}"></span> </div>
+    <div>性别：<span th:text="*{sex} == 0 ? '男' : '女'"></span></div>
+    <div>手机：<span th:text="*{phone}"></span></div>
+    <div>邮箱：<span th:text="*{email}"></span></div>
+    <div>地址：<span th:text="*{address}"></span></div>
+    <div>生日：<span th:text="${#dates.format(session.user.birthday, 'yyyy-MM-dd')}"></span></div>
 </div>
 </body>
 </html>
